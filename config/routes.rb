@@ -3,9 +3,11 @@ Rails.application.routes.draw do
   mount Rswag::Api::Engine => '/api-docs'
 
   scope defaults: { :format => :json } do
-    get 'stats/modules',  to: 'stats#modules'
-    get 'stats/top_modules',  to: 'stats#top_modules'
-    get 'stats/top_learners',  to: 'stats#top_learners'
+    get 'owners/movie_catalog',  to: 'owners#movie_catalog'
+    get 'owners/session_slot',  to: 'owners#session_slot'
+    get 'owners/venue',  to: 'owners#venue'
 
+    post 'owners/create_session', to: 'owners#create_session'
+    put 'owners/update_session', to: 'owners#update_session'
   end
 end

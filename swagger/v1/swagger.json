@@ -5,11 +5,11 @@
     "version": "v1"
   },
   "paths": {
-    "/stats/modules": {
+    "/owners/movie_catalog": {
       "get": {
-        "summary": "Returns list of modules",
+        "summary": "Returns list of movies",
         "tags": [
-          "Modules"
+          "Owner"
         ],
         "consumes": [
           "application/json"
@@ -21,67 +21,17 @@
               "type": "object",
               "properties": {
                 "list": {
-                  "category_name": {
-                    "type": "array",
-                    "items": {
-                      "properties": {
-                        "id": {
-                          "type": "number"
-                        },
-                        "name": {
-                          "type": "string"
-                        },
-                        "description": {
-                          "type": "string"
-                        },
-                        "category": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "schema": {
-              "type": "object",
-              "properties": {
-              }
-            }
-          }
-        }
-      }
-    },
-    "/stats/top_modules": {
-      "get": {
-        "summary": "Returns list of top modules",
-        "tags": [
-          "Modules"
-        ],
-        "consumes": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "top_list": {
                   "type": "array",
                   "items": {
                     "properties": {
-                      "game_course_module_id": {
-                        "type": "number"
-                      },
-                      "count": {
+                      "id": {
                         "type": "number"
                       },
                       "name": {
                         "type": "string"
+                      },
+                      "imdb_id": {
+                        "type": "string"
                       }
                     }
                   }
@@ -100,11 +50,11 @@
         }
       }
     },
-    "/stats/top_learners": {
+    "/owners/session_slot": {
       "get": {
-        "summary": "Returns list of top learners by month and week",
+        "summary": "Returns list of session slots",
         "tags": [
-          "Learners"
+          "Owner"
         ],
         "consumes": [
           "application/json"
@@ -115,33 +65,17 @@
             "schema": {
               "type": "object",
               "properties": {
-                "list_by_month": {
+                "list": {
                   "type": "array",
                   "items": {
                     "properties": {
-                      "user_account_id": {
-                        "type": "number"
-                      },
-                      "count": {
-                        "type": "number"
-                      },
-                      "username": {
+                      "name": {
                         "type": "string"
-                      }
-                    }
-                  }
-                },
-                "list_by_week": {
-                  "type": "array",
-                  "items": {
-                    "properties": {
-                      "user_account_id": {
-                        "type": "number"
                       },
-                      "count": {
-                        "type": "number"
+                      "start_date": {
+                        "type": "string"
                       },
-                      "username": {
+                      "end_date": {
                         "type": "string"
                       }
                     }
@@ -157,6 +91,162 @@
               "properties": {
               }
             }
+          }
+        }
+      }
+    },
+    "/owners/venue": {
+      "get": {
+        "summary": "Returns list of venues",
+        "tags": [
+          "Owner"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "list": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "name": {
+                        "type": "number"
+                      },
+                      "id_name": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type": "object",
+              "properties": {
+              }
+            }
+          }
+        }
+      }
+    },
+    "/owners/create_session": {
+      "post": {
+        "summary": "Create movie session",
+        "tags": [
+          "Owner"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "params",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "movie_id": {
+                  "type": "integer"
+                },
+                "venue_id": {
+                  "type": "integer"
+                },
+                "session_slot_id": {
+                  "type": "integer"
+                },
+                "session_date": {
+                  "type": "string"
+                },
+                "price": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "ok",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "type": "object",
+              "properties": {
+              }
+            }
+          }
+        }
+      }
+    },
+    "/owners/update_session": {
+      "put": {
+        "summary": "Update movie session",
+        "tags": [
+          "Owner"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "params",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "movie_id": {
+                  "type": "integer"
+                },
+                "venue_id": {
+                  "type": "integer"
+                },
+                "session_slot_id": {
+                  "type": "integer"
+                },
+                "session_date": {
+                  "type": "string"
+                },
+                "price": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "ok",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
       }
