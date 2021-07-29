@@ -1,0 +1,10 @@
+production:
+  #DATABASE
+  DATABASE_URL: 'your database url'
+development:
+  #DATABASE
+  DATABASE_URL: 'your database url'
+
+test:
+  #DATABASE
+  DATABASE_URL: 'your database url'

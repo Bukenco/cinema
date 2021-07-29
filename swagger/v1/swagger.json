@@ -1,0 +1,165 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API V1",
+    "version": "v1"
+  },
+  "paths": {
+    "/stats/modules": {
+      "get": {
+        "summary": "Returns list of modules",
+        "tags": [
+          "Modules"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "list": {
+                  "category_name": {
+                    "type": "array",
+                    "items": {
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "category": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type": "object",
+              "properties": {
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stats/top_modules": {
+      "get": {
+        "summary": "Returns list of top modules",
+        "tags": [
+          "Modules"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "top_list": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "game_course_module_id": {
+                        "type": "number"
+                      },
+                      "count": {
+                        "type": "number"
+                      },
+                      "name": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type": "object",
+              "properties": {
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stats/top_learners": {
+      "get": {
+        "summary": "Returns list of top learners by month and week",
+        "tags": [
+          "Learners"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "list_by_month": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "user_account_id": {
+                        "type": "number"
+                      },
+                      "count": {
+                        "type": "number"
+                      },
+                      "username": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "list_by_week": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "user_account_id": {
+                        "type": "number"
+                      },
+                      "count": {
+                        "type": "number"
+                      },
+                      "username": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type": "object",
+              "properties": {
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

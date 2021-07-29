@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 100gemfile
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: local_cinema
+  pool: 5
+  username: buka
+  password: "123456789"
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: local_cinema_test
+  pool: 5
+  username: buka
+  password: "123456789"
